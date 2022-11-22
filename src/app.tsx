@@ -72,12 +72,12 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
     menu: {
       // 每当 initialState?.currentUser?.userid 发生修改时重新执行 request
       params: {
-        currentUser: initialState?.currentUser,
+        currentAuthority: sessionStorage.getItem('currentAuthority'),
       },
       request: async (params, defaultMenuData) => {
         // initialState.currentUser 中包含了所有用户信息
         // const menuData = await fetchMenuData();
-        if (params?.currentUser?.access === 'user') {
+        if (params?.currentAuthority === 'user') {
           // user routes
           return defaultMenuData.slice(12);
         }

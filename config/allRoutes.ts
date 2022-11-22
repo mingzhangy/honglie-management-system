@@ -33,6 +33,7 @@ export default [
   {
     path: '/dashboard',
     name: 'dashboard',
+    access: 'admin',
     icon: 'bar-chart',
     routes: [
       {
@@ -63,6 +64,7 @@ export default [
     path: '/list',
     icon: 'appstore',
     name: 'list',
+    access: 'admin',
     routes: [
       {
         path: '/list',
@@ -92,6 +94,7 @@ export default [
     path: '/project',
     icon: 'build',
     name: 'project',
+    access: 'admin',
     component: './list/search',
     routes: [
       {
@@ -122,6 +125,7 @@ export default [
     path: '/purchasing',
     icon: 'pay-circle',
     name: 'purchasing',
+    access: 'admin',
     routes: [
       {
         path: '/purchasing',
@@ -169,6 +173,7 @@ export default [
     path: '/profile',
     name: 'profile',
     icon: 'money-collect',
+    access: 'admin',
     routes: [
       {
         path: '/profile',
@@ -192,6 +197,7 @@ export default [
     name: 'account',
     icon: 'user',
     path: '/account',
+    access: 'admin',
     routes: [
       {
         path: '/account',
@@ -215,6 +221,7 @@ export default [
     name: 'editor',
     icon: 'book',
     path: '/editor',
+    access: 'admin',
     routes: [
       {
         path: '/editor',
@@ -244,6 +251,7 @@ export default [
     path: '/form',
     icon: 'lock',
     name: 'form',
+    access: 'admin',
     component: './form/advanced-form',
   },
   // user routes
@@ -251,6 +259,7 @@ export default [
     path: '/enterprise-info',
     name: 'enterprise-info',
     icon: 'home',
+    access: 'user',
     routes: [
       {
         path: '/enterprise-info/basic-info',
@@ -268,6 +277,7 @@ export default [
     path: '/static-file-management',
     name: 'static-file-management',
     icon: 'file',
+    access: 'user',
     routes: [
       {
         path: '/static-file-management/base-file',
@@ -305,6 +315,7 @@ export default [
     path: '/dynamic-file-anagement',
     name: 'dynamic-file-anagement',
     icon: 'file-text',
+    access: 'user',
     routes: [
       {
         path: '/dynamic-file-anagement/operation-pollution-prevention',
@@ -343,6 +354,7 @@ export default [
     name: 'platform-filling-simulation',
     component: './list/table-list',
     icon: 'file-word',
+    access: 'user',
   },
 
   {
@@ -350,30 +362,35 @@ export default [
     name: 'corporate-health-diagnostics',
     component: './list/table-list',
     icon: 'audit',
+    access: 'user',
   },
   {
     path: '/environmental-consulting',
     name: 'environmental-consulting',
     component: './list/table-list',
     icon: 'phone',
+    access: 'user',
   },
   {
     path: '/knowledge-base',
     name: 'knowledge-base',
     component: './list/table-list',
     icon: 'book',
+    access: 'user',
   },
   {
     path: '/requirements-release',
     name: 'requirements-release',
     component: './list/table-list',
     icon: 'api',
+    access: 'user',
   },
   {
     path: '/order-center',
     name: 'order-center',
     component: './list/table-list',
     icon: 'container',
+    access: 'user',
   },
   {
     path: '/',

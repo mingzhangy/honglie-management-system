@@ -79,10 +79,10 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
         // const menuData = await fetchMenuData();
         if (params?.currentAuthority === 'user') {
           // user routes
-          return defaultMenuData.slice(12);
+          return defaultMenuData.filter((route) => route.access === 'user');
         }
         // admin routes
-        return defaultMenuData.slice(0, 12);
+        return defaultMenuData.filter((route) => route.access === 'admin');
       },
     },
     links: [],

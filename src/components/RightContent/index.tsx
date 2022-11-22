@@ -50,32 +50,6 @@ const GlobalHeaderRight: React.FC = () => {
         //   console.log('input', value);
         // }}
       />
-      <a
-        target="_blank"
-        href="http://www.schmhb.cn/"
-        rel="noopener noreferrer"
-        className={styles.action}
-      >
-        Docs
-      </a>
-
-      <a
-        target="_blank"
-        href="http://www.schmhb.cn/"
-        rel="noopener noreferrer"
-        className={styles.action}
-      >
-        Source
-      </a>
-
-      <a
-        target="_blank"
-        href="http://www.schmhb.cn/"
-        rel="noopener noreferrer"
-        className={styles.action}
-      >
-        Technology
-      </a>
       <span
         className={styles.action}
         onClick={() => {

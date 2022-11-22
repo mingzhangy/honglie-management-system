@@ -41,7 +41,8 @@ const Login: React.FC = () => {
     if (userInfo) {
       const user = {
         ...userInfo,
-        name: userInfo.access === 'admin' ? '宏茂李烈（管理员）' : '汪国良',
+        name:
+          sessionStorage.getItem('currentAuthority') === 'admin' ? '宏茂李烈（管理员）' : '汪国良',
       };
       sessionStorage.setItem('currentUser', JSON.stringify(user));
       await setInitialState((s) => ({
@@ -69,6 +70,8 @@ const Login: React.FC = () => {
           id: 'pages.login.success',
           defaultMessage: '登录成功！',
         });
+        sessionStorage.setItem('login', '1');
+        sessionStorage.setItem('currentAuthority', `${msg?.currentAuthority}`);
         message.success(defaultLoginSuccessMessage);
         await fetchUserInfo();
         /** 此方法会跳转到 redirect 参数所在的位置 */
@@ -102,28 +105,18 @@ const Login: React.FC = () => {
       </div>
       <div className={styles.content}>
         <LoginForm
-          logo={
+          title={
             <img
-              style={{ height: 75, width: 278 }}
+              style={{ height: 75, width: 278, marginBottom: 30 }}
               src="https://aimg8.dlssyht.cn/u/2087237/module/simplepicbackground/2087237/3342/6682063_1626922590.png?x-oss-process=image/resize,m_fixed,w_278,h_75,limit_0"
               data-original-src="https://aimg8.dlssyht.cn/u/2087237/module/simplepicbackground/2087237/3342/6682063_1626922590.png?x-oss-process=image/resize,m_fixed,w_278,h_75,limit_0"
             />
           }
-          title=""
           subTitle=""
           initialValues={{
             autoLogin: true,
           }}
-          actions={[
-            <FormattedMessage
-              key="loginWith"
-              id="pages.login.loginWith"
-              defaultMessage="其他登录方式"
-            />,
-            <QqOutlined key="QqOutlined" className={styles.icon} />,
-            <WechatOutlined key="WechatOutlined" className={styles.icon} />,
-            <AlipayCircleOutlined key="AlipayCircleOutlined" className={styles.icon} />,
-          ]}
+          actions={[]}
           onFinish={async (values) => {
             await handleSubmit(values as API.LoginParams);
           }}

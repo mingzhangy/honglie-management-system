@@ -37,6 +37,8 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
     (event: MenuInfo) => {
       const { key } = event;
       if (key === 'logout') {
+        sessionStorage.removeItem('login');
+        sessionStorage.removeItem('currentAuthority');
         setInitialState((s) => ({ ...s, currentUser: undefined }));
         loginOut();
         return;

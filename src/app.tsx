@@ -27,6 +27,9 @@ export async function getInitialState(): Promise<{
   fetchUserInfo?: () => Promise<API.CurrentUser | undefined>;
 }> {
   const fetchUserInfo = async () => {
+    if (sessionStorage.getItem('login') !== '1') {
+      return undefined;
+    }
     try {
       const msg = await queryCurrentUser();
       return msg.data;

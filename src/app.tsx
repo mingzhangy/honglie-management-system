@@ -1,15 +1,11 @@
 import type { Settings as LayoutSettings } from '@ant-design/pro-layout';
-import { SettingDrawer } from '@ant-design/pro-layout';
 import { PageLoading } from '@ant-design/pro-layout';
-import type { RunTimeLayoutConfig } from 'umi';
-import { history, Link } from 'umi';
+import { history, RunTimeLayoutConfig } from 'umi';
 import RightContent from '@/components/RightContent';
 import Footer from '@/components/Footer';
 import { currentUser as queryCurrentUser } from './services/ant-design-pro/api';
 import defaultSettings from '../config/defaultSettings';
-import userRoutes from '@/../config/userRoutes';
 
-const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';
 
 /** 获取用户信息比较慢的时候会展示一个 loading */
@@ -32,7 +28,11 @@ export async function getInitialState(): Promise<{
     }
     try {
       const msg = await queryCurrentUser();
-      return msg.data;
+      return {
+        ...msg.data,
+        name:
+          sessionStorage.getItem('currentAuthority') === 'admin' ? '宏茂李烈（管理员）' : '汪国良',
+      };
     } catch (error) {
       history.push(loginPath);
     }
@@ -54,7 +54,7 @@ export async function getInitialState(): Promise<{
 }
 
 // ProLayout 支持的api https://procomponents.ant.design/components/layout
-export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) => {
+export const layout: RunTimeLayoutConfig = ({ initialState }) => {
   return {
     rightContentRender: () => <RightContent />,
     disableContentMargin: false,
@@ -74,15 +74,15 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
       params: {
         currentAuthority: sessionStorage.getItem('currentAuthority'),
       },
-      request: async (params, defaultMenuData) => {
+      request: async (params: any, defaultMenuData: any) => {
         // initialState.currentUser 中包含了所有用户信息
         // const menuData = await fetchMenuData();
         if (params?.currentAuthority === 'user') {
           // user routes
-          return defaultMenuData.filter((route) => route.access === 'user');
+          return defaultMenuData.filter((route: any) => route.access === 'user');
         }
         // admin routes
-        return defaultMenuData.filter((route) => route.access === 'admin');
+        return defaultMenuData.filter((route: any) => route.access === 'admin');
       },
     },
     links: [],
@@ -90,7 +90,7 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
     // 自定义 403 页面
     // unAccessible: <div>unAccessible</div>,
     // 增加一个 loading 的状态
-    childrenRender: (children, props) => {
+    childrenRender: (children) => {
       // if (initialState?.loading) return <PageLoading />;
       return <>{children}</>;
     },

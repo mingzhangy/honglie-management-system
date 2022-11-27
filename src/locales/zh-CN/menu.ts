@@ -74,6 +74,8 @@ export default {
   'menu.dynamic-file-anagement.production-facilities': '生产设施运行',
   'menu.dynamic-file-anagement.others': '其他',
   'menu.platform-filling-simulation': '平台填报模拟',
+  'menu.platform-filling-simulation.data-statistics': '一键数据统计',
+  'menu.platform-filling-simulation.data-filling': '一键数据填报',
   'menu.corporate-health-diagnostics': '企业健康诊断',
   'menu.environmental-consulting': '环保咨询',
   'menu.knowledge-base': '知识库',

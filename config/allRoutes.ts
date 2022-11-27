@@ -274,6 +274,24 @@ export default [
     ],
   },
   {
+    path: '/platform-filling-simulation',
+    name: 'platform-filling-simulation',
+    icon: 'snippets',
+    access: 'user',
+    routes: [
+      {
+        path: '/platform-filling-simulation/data-statistics',
+        name: 'data-statistics',
+        component: './list/table-list',
+      },
+      {
+        path: '/platform-filling-simulation/data-filling',
+        name: 'data-filling',
+        component: './data-filling',
+      },
+    ],
+  },
+  {
     path: '/static-file-management',
     name: 'static-file-management',
     icon: 'file',
@@ -349,14 +367,6 @@ export default [
       },
     ],
   },
-  {
-    path: '/platform-filling-simulation',
-    name: 'platform-filling-simulation',
-    component: './list/table-list',
-    icon: 'file-word',
-    access: 'user',
-  },
-
   {
     path: '/corporate-health-diagnostics',
     name: 'corporate-health-diagnostics',
